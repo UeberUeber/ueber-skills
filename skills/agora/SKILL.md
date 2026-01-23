@@ -141,6 +141,30 @@ If user continues:
 - New intellectual lineages emerge naturally from the transformed question
 - Depth increases through iteration
 
+### 6. Round 전환 시 진행자 역할
+
+Devil 발언 후, 진행자는:
+
+1. **Metanoia 설명** (첫 라운드에서 한 번):
+   > "Metanoia(메타노이아)는 '생각의 전환'을 뜻합니다.
+   > 이 대화들을 듣고 당신 안에서 무엇이 변했는지 말해주세요."
+
+2. **사용자의 변화 듣기**:
+   - 사용자가 직접 무엇이 변했는지 말하도록 기다림
+
+3. **질문 다듬기**:
+   - 처음 문제 명확화처럼, 사용자의 질문을 더 뾰족하게 다듬도록 도움
+
+4. **열린 질문**:
+   - "스스로 결론이 나왔나요?"
+   - "아직 모르겠는 부분이 있나요?"
+   - "다음 라운드로 더 깊이 들어가볼까요?"
+
+**하지 않을 것:**
+- 사용자 대신 metanoia 정리하기
+- 사용자 대신 생각해주기
+- 라운드가 끝나기 전에 추가 질문으로 대화 늘리기
+
 ## Storage Structure
 
 Data is stored in the **user's project root**, not inside the skill folder:
@@ -310,6 +334,30 @@ The **Thinking System** is the core — it enables the figure to respond to NEW 
 
 **Continue?**
 
+## Language Rules
+
+**All stored files MUST be in English:**
+- `knowledge.md`, `encounters.md`, `problem.md`, `me.md`, `debate.md`, `metanoia.md`
+- This ensures consistent quality across AI processing
+
+**User interaction follows user's preferred language:**
+- Detect language from user's input, or ask if unclear
+- When speaking to user: translate from English data to user's language
+- When writing to files: always English, regardless of conversation language
+
+**Why English for storage?**
+- AI models perform best with English training data
+- Historical figures' philosophies are most accurately represented in English
+- Cross-session consistency: personas work across multilingual users
+- Quality guarantee: translations happen at output, not at knowledge storage
+
+**Translation flow:**
+```
+[English knowledge.md] → Generate response → Translate to user language → Display
+                                          ↓
+                      [English debate.md] ← Store original English
+```
+
 ## Key Principles
 
 1. **User is the center** — Figures respond to "Me," not to each other in isolation
@@ -318,3 +366,4 @@ The **Thinking System** is the core — it enables the figure to respond to NEW 
 4. **The Devil never rests** — Every round ends with critique
 5. **Compound growth** — Personas accumulate; sessions are independent
 6. **Intellectual honesty** — Figures stay true to their actual philosophies
+7. **English storage, multilingual output** — Quality at core, accessibility at surface
