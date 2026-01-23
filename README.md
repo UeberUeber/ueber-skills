@@ -5,8 +5,8 @@ A collection of custom skills following the SKILL.md standard.
 ## Compatibility
 
 These skills work with any AI coding assistant that supports the SKILL.md format:
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
-- [Google Antigravity](https://idx.google.com/antigravity)
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code/skills)
+- [Google Antigravity](https://antigravity.google/docs/skills)
 - And other SKILL.md-compatible tools
 
 ## Installation
@@ -75,8 +75,8 @@ SKILL.md 표준을 따르는 커스텀 스킬 모음집입니다.
 ## 호환성
 
 SKILL.md 포맷을 지원하는 모든 AI 코딩 도구에서 사용할 수 있습니다:
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
-- [Google Antigravity](https://idx.google.com/antigravity)
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code/skills)
+- [Google Antigravity](https://antigravity.google/docs/skills)
 - 기타 SKILL.md 호환 도구
 
 ## 설치 방법
