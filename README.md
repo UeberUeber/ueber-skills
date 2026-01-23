@@ -64,7 +64,7 @@ The `personas/` folder acts as a reusable wisdom library — figures remember pa
 
 ## License
 
-MIT
+[CC BY-NC 4.0](LICENSE) - Free to use and modify with attribution, but not for commercial purposes.
 
 ---
 
@@ -131,3 +131,7 @@ SKILL.md 포맷을 지원하는 모든 AI 코딩 도구에서 사용할 수 있�
 ```
 
 `personas/` 폴더는 재사용 가능한 지혜 라이브러리 역할을 합니다 — 인물들은 세션을 넘어 과거 대화를 기억합니다.
+
+## 라이센스
+
+[CC BY-NC 4.0](LICENSE) - 저작자 표시 필수, 상업적 이용 금지.
