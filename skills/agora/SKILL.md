@@ -229,12 +229,18 @@ When summoning a figure, check global library first, then create locally if not 
    - How it connected to past encounters (if any)
 
 ### During Each Round
-1. Append each figure's contribution to `agora/sessions/{topic-name}/debate.md`
-2. Format: `## Round {N}` followed by each speaker's content
+1. 각 인물의 발언은 **텍스트로 직접 사용자에게 출력**
+2. 파일 저장은 하지 않음 (라운드 중에는 Edit/Write 호출 최소화)
 
 ### On Round End
-1. Append "Me" metanoia to `debate.md`
-2. If user ends session, save final `metanoia.md`
+1. 라운드가 끝나면 `debate.md`에 **한 번에 Write**로 전체 라운드 내용 저장
+2. Format: `## Round {N}` followed by each speaker's content
+3. "Me" metanoia는 사용자가 응답한 후 debate.md에 추가
+4. If user ends session, save final `metanoia.md`
+
+**Why batch write?**
+- Edit 도구 결과가 화면에 표시되어 가독성을 해침
+- 라운드 끝에 Write로 한 번에 저장하면 사용자 경험이 깔끔해짐
 
 ### File Naming Convention
 - Personas: lowercase, hyphenated (e.g., `john-stuart-mill`, `lao-tzu`)
@@ -250,24 +256,31 @@ Create: agora/sessions/sovereign-life/me.md
 Summon Mill → Check agora/personas/john-stuart-mill/
     Not found → Generate & Save knowledge.md
     ↓
-Mill speaks → Append to debate.md
+Mill speaks → 텍스트로 사용자에게 출력 (파일 저장 X)
     ↓
 Summon MacIntyre → Check agora/personas/alasdair-macintyre/
     Not found → Generate & Save knowledge.md
     ↓
+MacIntyre speaks → 텍스트로 사용자에게 출력 (파일 저장 X)
+    ↓
 ... continue for all figures ...
     ↓
-Round ends → Append metanoia to debate.md
+Devil speaks → 텍스트로 사용자에게 출력
+    ↓
+Round ends → Write로 debate.md에 전체 라운드 한 번에 저장
+    ↓
+User responds with metanoia → Append to debate.md
     ↓
 User ends session → Save metanoia.md
 ```
 
 ### Output to User
-1. 각 인물의 발언을 **생성 즉시** 사용자에게 출력할 것
-2. 출력하면서 동시에 `debate.md`에 append
+1. 각 인물의 발언을 **생성 즉시** 사용자에게 **텍스트로 직접 출력**
+2. **라운드 중에는 파일 저장하지 않음** — Edit/Write 도구 결과가 화면에 표시되어 가독성을 해치므로
 3. 다음 인물은 이전 발언을 참조하여 생성 (순차적)
 4. **전문(full text)**을 보여줄 것 — 요약/축약 금지
 5. 순서: Me → A → B → A' → B' → C → Devil → (사용자 응답 대기)
+6. **라운드 종료 후** Write로 `debate.md`에 전체 라운드 한 번에 저장
 
 ## The Devil
 
