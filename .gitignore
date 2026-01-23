@@ -1,1 +1,4 @@
 .claude/
+
+# Agora skill runtime data (generated per user/session)
+agora/
