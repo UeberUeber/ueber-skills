@@ -238,6 +238,13 @@ Round ends → Append metanoia to debate.md
 User ends session → Save metanoia.md
 ```
 
+### Output to User
+1. 각 인물의 발언을 **생성 즉시** 사용자에게 출력할 것
+2. 출력하면서 동시에 `debate.md`에 append
+3. 다음 인물은 이전 발언을 참조하여 생성 (순차적)
+4. **전문(full text)**을 보여줄 것 — 요약/축약 금지
+5. 순서: Me → A → B → A' → B' → C → Devil → (사용자 응답 대기)
+
 ## The Devil
 
 The Devil is a **permanent resident** of the agora.
