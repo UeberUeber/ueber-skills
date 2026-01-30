@@ -141,30 +141,6 @@ If user continues:
 - New intellectual lineages emerge naturally from the transformed question
 - Depth increases through iteration
 
-### 6. Round 전환 시 진행자 역할
-
-Devil 발언 후, 진행자는:
-
-1. **Metanoia 설명** (첫 라운드에서 한 번):
-   > "Metanoia(메타노이아)는 '생각의 전환'을 뜻합니다.
-   > 이 대화들을 듣고 당신 안에서 무엇이 변했는지 말해주세요."
-
-2. **사용자의 변화 듣기**:
-   - 사용자가 직접 무엇이 변했는지 말하도록 기다림
-
-3. **질문 다듬기**:
-   - 처음 문제 명확화처럼, 사용자의 질문을 더 뾰족하게 다듬도록 도움
-
-4. **열린 질문**:
-   - "스스로 결론이 나왔나요?"
-   - "아직 모르겠는 부분이 있나요?"
-   - "다음 라운드로 더 깊이 들어가볼까요?"
-
-**하지 않을 것:**
-- 사용자 대신 metanoia 정리하기
-- 사용자 대신 생각해주기
-- 라운드가 끝나기 전에 추가 질문으로 대화 늘리기
-
 ## Storage Structure
 
 Data is stored in the **user's project root**, not inside the skill folder:
@@ -229,18 +205,28 @@ When summoning a figure, check global library first, then create locally if not 
    - How it connected to past encounters (if any)
 
 ### During Each Round
-1. 각 인물의 발언은 **텍스트로 직접 사용자에게 출력**
-2. 파일 저장은 하지 않음 (라운드 중에는 Edit/Write 호출 최소화)
+1. Append each figure's contribution to `agora/sessions/{topic-name}/debate.md`
+2. Format: `## Round {N}` followed by each speaker's content
+3. **Figure Header Format**: When a figure speaks, use this header:
+   ```
+   ## {Figure Name} ({brief identity})
+   ```
+   Brief identity should include:
+   - Primary role/occupation
+   - Historical period or lifespan
+   - Core philosophy/approach (2-4 words)
+
+   Examples:
+   - `## Aristotle (Greek philosopher, 384-322 BCE, virtue ethics)`
+   - `## Lao Tzu (Ancient Chinese philosopher, Taoism, wu wei)`
+   - `## Martha Nussbaum (Contemporary philosopher, capabilities approach)`
+   - `## Miles Davis (Jazz musician, 1926-1991, improvisation)`
+
+   Extract this information from the persona's knowledge.md Context section.
 
 ### On Round End
-1. 라운드가 끝나면 `debate.md`에 **한 번에 Write**로 전체 라운드 내용 저장
-2. Format: `## Round {N}` followed by each speaker's content
-3. "Me" metanoia는 사용자가 응답한 후 debate.md에 추가
-4. If user ends session, save final `metanoia.md`
-
-**Why batch write?**
-- Edit 도구 결과가 화면에 표시되어 가독성을 해침
-- 라운드 끝에 Write로 한 번에 저장하면 사용자 경험이 깔끔해짐
+1. Append "Me" metanoia to `debate.md`
+2. If user ends session, save final `metanoia.md`
 
 ### File Naming Convention
 - Personas: lowercase, hyphenated (e.g., `john-stuart-mill`, `lao-tzu`)
@@ -256,31 +242,17 @@ Create: agora/sessions/sovereign-life/me.md
 Summon Mill → Check agora/personas/john-stuart-mill/
     Not found → Generate & Save knowledge.md
     ↓
-Mill speaks → 텍스트로 사용자에게 출력 (파일 저장 X)
+Mill speaks → Append to debate.md
     ↓
 Summon MacIntyre → Check agora/personas/alasdair-macintyre/
     Not found → Generate & Save knowledge.md
     ↓
-MacIntyre speaks → 텍스트로 사용자에게 출력 (파일 저장 X)
-    ↓
 ... continue for all figures ...
     ↓
-Devil speaks → 텍스트로 사용자에게 출력
-    ↓
-Round ends → Write로 debate.md에 전체 라운드 한 번에 저장
-    ↓
-User responds with metanoia → Append to debate.md
+Round ends → Append metanoia to debate.md
     ↓
 User ends session → Save metanoia.md
 ```
-
-### Output to User
-1. 각 인물의 발언을 **생성 즉시** 사용자에게 **텍스트로 직접 출력**
-2. **라운드 중에는 파일 저장하지 않음** — Edit/Write 도구 결과가 화면에 표시되어 가독성을 해치므로
-3. 다음 인물은 이전 발언을 참조하여 생성 (순차적)
-4. **전문(full text)**을 보여줄 것 — 요약/축약 금지
-5. 순서: Me → A → B → A' → B' → C → Devil → (사용자 응답 대기)
-6. **라운드 종료 후** Write로 `debate.md`에 전체 라운드 한 번에 저장
 
 ## The Devil
 
@@ -337,39 +309,15 @@ The **Thinking System** is the core — it enables the figure to respond to NEW 
 > Underlying tension: Fear that choosing one means losing the other.
 
 **Round 1**:
-- **Aristotle** (A): Eudaimonia through virtuous activity; excellence in your roles
-- **Lao Tzu** (B): Wu wei; stop striving, harmony comes from non-action
-- **Martha Nussbaum** (A'): Capabilities approach; human flourishing requires both achievement AND relationships
-- **Zhuangzi** (B'): The useless tree lives longest; ambition is a trap
-- **Miles Davis** (C): "In jazz, you don't balance — you listen and respond. The good life might be improvisation, not composition."
+- **Aristotle (Greek philosopher, 384-322 BCE, virtue ethics)**: Eudaimonia through virtuous activity; excellence in your roles
+- **Lao Tzu (Ancient Chinese philosopher, Taoism, wu wei)**: Wu wei; stop striving, harmony comes from non-action
+- **Martha Nussbaum (Contemporary philosopher, capabilities approach)**: Capabilities approach; human flourishing requires both achievement AND relationships
+- **Zhuangzi (Ancient Chinese philosopher, Taoist, paradox)**: The useless tree lives longest; ambition is a trap
+- **Miles Davis (Jazz musician, 1926-1991, improvisation)**: "In jazz, you don't balance — you listen and respond. The good life might be improvisation, not composition."
 - **Devil**: "You're all assuming life should be 'good.' What if the question itself is the problem?"
 - **Me**: "I see now that 'balance' might be the wrong frame. Perhaps it's about integration... or improvisation?"
 
 **Continue?**
-
-## Language Rules
-
-**All stored files MUST be in English:**
-- `knowledge.md`, `encounters.md`, `problem.md`, `me.md`, `debate.md`, `metanoia.md`
-- This ensures consistent quality across AI processing
-
-**User interaction follows user's preferred language:**
-- Detect language from user's input, or ask if unclear
-- When speaking to user: translate from English data to user's language
-- When writing to files: always English, regardless of conversation language
-
-**Why English for storage?**
-- AI models perform best with English training data
-- Historical figures' philosophies are most accurately represented in English
-- Cross-session consistency: personas work across multilingual users
-- Quality guarantee: translations happen at output, not at knowledge storage
-
-**Translation flow:**
-```
-[English knowledge.md] → Generate response → Translate to user language → Display
-                                          ↓
-                      [English debate.md] ← Store original English
-```
 
 ## Key Principles
 
@@ -379,4 +327,3 @@ The **Thinking System** is the core — it enables the figure to respond to NEW 
 4. **The Devil never rests** — Every round ends with critique
 5. **Compound growth** — Personas accumulate; sessions are independent
 6. **Intellectual honesty** — Figures stay true to their actual philosophies
-7. **English storage, multilingual output** — Quality at core, accessibility at surface
