@@ -62,6 +62,40 @@ When you run `/agora`, the following structure is created in your project root:
 
 The `personas/` folder acts as a reusable wisdom library — figures remember past encounters across sessions.
 
+### `/brainstorm-ing` - Structured Brainstorming + Implementation
+
+A multi-agent brainstorming skill that generates 90-120+ ideas through structured divergent thinking, then converges into an actionable implementation.
+
+**When to use:**
+- You need to solve a complex problem creatively
+- You want diverse perspectives before building something
+- You want brainstorming that actually leads to implementation
+
+**How it works:**
+
+**Part 1 — Brainstorming:**
+1. Define the problem (constraints, goals, open spaces)
+2. Three expert personas are selected (triangulated for maximum diversity)
+3. Independent divergence — each persona generates ~30-40 ideas using 7 creativity techniques + Verbalized Sampling
+4. Cross-pollination (Teams) — personas react to each other's ideas, creating chain reactions
+5. Individual integration — each persona digests what they learned
+6. Convergence — independent evaluation, then you choose a direction
+
+**Part 2 — Implementation:**
+1. Define deliverables
+2. Assemble a builder team
+3. Build collaboratively (Teams)
+4. Review against completion criteria
+
+**Key techniques:**
+- **Verbalized Sampling** — each idea shows its generation probability (%), breaking mode collapse and increasing diversity 1.6-2.1x
+- **Contradiction pairs** — opposing ideas become seeds for breakthrough combinations
+- **7 forced-expansion techniques** — SCAMPER, combinatorial decomposition, TRIZ, provocation, assumption reversal, worst possible idea, exaptation
+
+**Generated files:**
+
+The skill creates files in your project's working directory as agents collaborate. All outputs are delivered through the conversation.
+
 ## License
 
 [CC BY-NC 4.0](LICENSE) - Free to use and modify with attribution, but not for commercial purposes.
@@ -131,6 +165,40 @@ SKILL.md 포맷을 지원하는 모든 AI 코딩 도구에서 사용할 수 있�
 ```
 
 `personas/` 폴더는 재사용 가능한 지혜 라이브러리 역할을 합니다 — 인물들은 세션을 넘어 과거 대화를 기억합니다.
+
+### `/brainstorm-ing` - 구조화된 브레인스토밍 + 구현
+
+멀티 에이전트 브레인스토밍 스킬. 구조화된 발산적 사고로 90-120개 이상의 아이디어를 생성한 뒤, 수렴해서 실제 구현까지 이어갑니다.
+
+**사용 시점:**
+- 복잡한 문제를 창의적으로 풀어야 할 때
+- 무언가를 만들기 전에 다양한 관점이 필요할 때
+- 실제 구현으로 이어지는 브레인스토밍이 필요할 때
+
+**작동 방식:**
+
+**Part 1 — 브레인스토밍:**
+1. 문제 정의 (제약, 목표, 열린 공간)
+2. 전문가 페르소나 3명 선정 (최대 다양성을 위한 삼각 배치)
+3. 독립 발산 — 각 페르소나가 7가지 창의 기법 + Verbalized Sampling으로 ~30-40개 아이디어 생성
+4. 교차 수분 (Teams) — 페르소나들이 서로의 아이디어에 반응, 연쇄 반응 발생
+5. 개인 통합 — 각 페르소나가 배운 것을 소화
+6. 수렴 — 독립 평가 후 방향 선택
+
+**Part 2 — 실행:**
+1. 산출물 정의
+2. 빌더 팀 구성
+3. 협력 개발 (Teams)
+4. 완성 기준 대조 검토
+
+**핵심 기법:**
+- **Verbalized Sampling** — 각 아이디어에 생성 확률(%)을 표시해 mode collapse를 깨고 다양성 1.6-2.1배 향상
+- **모순 쌍** — 정반대 아이디어가 돌파구 조합의 씨앗이 됨
+- **7가지 강제 확장 기법** — SCAMPER, 조합 분해, TRIZ, Provocation, Assumption Reversal, Worst Possible Idea, Exaptation
+
+**생성되는 파일:**
+
+에이전트가 협업하면서 프로젝트 작업 디렉토리에 파일을 생성합니다. 모든 결과물은 대화를 통해 전달됩니다.
 
 ## 라이센스
 
