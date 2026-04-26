@@ -13,6 +13,8 @@ Default output:
 
 - Release folder: `dist/itch/<game-slug>/`
 - Upload ZIP: `dist/itch/<game-slug>-itch.zip`
+- Cover image: `dist/itch/<game-slug>-cover.png`
+- Screenshots: `dist/itch/<game-slug>-screenshots/`
 - ZIP root must contain `index.html` directly.
 
 ## Workflow
@@ -45,7 +47,14 @@ Default output:
    - Run `zip -qr ../<game-slug>-itch.zip .` from the release folder, or equivalent.
    - Verify `unzip -l` shows `index.html` at ZIP root, not nested under an extra directory.
 
-7. Validate the artifact.
+7. Prepare itch.io page images as separate upload assets.
+   - Create a required cover image at `630x500` when possible; itch.io minimum is `315x250`.
+   - Create screenshots in a separate folder, not inside the upload ZIP.
+   - Prefer real captures from the served release build over source/dev captures.
+   - Capture enough images to explain the game loop: title/start, active gameplay, upgrade/choice/strategy, reward/result, and any distinctive mode.
+   - Keep screenshot dimensions consistent with the game viewport unless a store page need suggests otherwise.
+
+8. Validate the artifact.
    - Serve the release folder with `python3 -m http.server <port> --directory <release-folder>`.
    - Check `/`, core JS/CSS, vendor scripts, and representative assets return HTTP 200.
    - Search the release folder for unwanted references: `rg -n "dev-recorder|localhost|cdn.jsdelivr|fonts.googleapis|recordings|palette-test|\\.git|\\.DS_Store" <release-folder>`.
@@ -56,6 +65,8 @@ Default output:
 Tell the user:
 
 - Exact ZIP path to upload.
+- Exact cover image path and size.
+- Exact screenshots folder path and screenshot count.
 - Recommended viewport/embed size from the game config, commonly `800 x 800` for square Phaser games.
 - Whether fullscreen should be enabled.
 - Whether mobile friendly should be enabled.
