@@ -11,11 +11,13 @@ Create a clean itch.io upload artifact for an existing playable HTML5 game. Keep
 
 Default output:
 
-- Release folder: `dist/itch/<game-slug>/`
-- Upload ZIP: `dist/itch/<game-slug>-itch.zip`
-- Cover image: `dist/itch/<game-slug>-cover.png`
-- Screenshots: `dist/itch/<game-slug>-screenshots/`
+- Release folder: `dist/itch/<game-slug>_<YYYYMMDD-HHMM>/`
+- Upload ZIP: `dist/itch/<game-slug>-itch_<YYYYMMDD-HHMM>.zip`
+- Cover image: `dist/itch/<game-slug>-cover_<YYYYMMDD-HHMM>.png`
+- Screenshots: `dist/itch/<game-slug>-screenshots_<YYYYMMDD-HHMM>/`
 - ZIP root must contain `index.html` directly.
+
+**Timestamp suffix — never overwrite previous builds.** Every release artifact (folder, ZIP, cover, screenshots) gets a `<YYYYMMDD-HHMM>` suffix from the build moment. Multiple iterations can coexist; user rolls back to any prior build by picking that timestamp. Match the timestamp across all four artifacts of one build so they group naturally in directory listings. Compute it once at the start of the run and reuse.
 
 ## Workflow
 
@@ -44,7 +46,7 @@ Default output:
    - If recorder/debug flags live in JS, patch only the release copy so source development behavior remains intact.
 
 6. Build the ZIP from inside the release folder.
-   - Run `zip -qr ../<game-slug>-itch.zip .` from the release folder, or equivalent.
+   - Run `zip -qr ../<game-slug>-itch_<TS>.zip .` from the release folder, or equivalent. `<TS>` is the shared timestamp `YYYYMMDD-HHMM` for this build.
    - Verify `unzip -l` shows `index.html` at ZIP root, not nested under an extra directory.
 
 7. Prepare itch.io page images as separate upload assets.
